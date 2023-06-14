@@ -10,34 +10,45 @@ export default function SideBar() {
     const navigate = useNavigate()
     const [currentUser, setCurrentUser] = useRecoilState(atomCurrentUser)
     
-      function logOut() {
-          Swal.fire({
-            title: 'Confirm Logout?',
-            text: "You will be logged out of your account!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Logout'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire(
-                'Done',
-                'You have been logged out.',
-                'success'
-              )
-              let temp = { ...currentUser };
-              temp.isLoggedIn = false;
-              setCurrentUser(temp);
-              localStorage.setItem("currentUser", JSON.stringify(currentUser));
-            }
-          })
-      }
+  function logOut() {
+    if (currentUser.isLoggedIn == true) {
+      Swal.fire({
+        title: 'Confirm Logout?',
+        text: "You will be logged out of your account!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Logout'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Done',
+            'You have been logged out.',
+            'success'
+          )
+          let temp = { ...currentUser };
+          temp.isLoggedIn = false;
+          setCurrentUser(temp);
+          localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+        }
+      })
+      setIsSideBarVisible(!isSideBarVisible)
+    }
+    else {
+      Swal.fire("You are not logged in!")
+      setIsSideBarVisible(!isSideBarVisible)
+    }
+  }
   return (
       <div 
       className={`sidebar ${isSideBarVisible ? "visible" : ""}`}
       >
-      <div className='menuDiv' onClick={()=>navigate('/yourdata')}>Your Data</div>
+      <div className='menuDiv' onClick={() => {
+        navigate('/yourdata')
+      setIsSideBarVisible(!isSideBarVisible)
+      }}>Your Data</div>
       <div className='menuDiv' >About Us</div>
           <div className='menuDiv'
               onClick={logOut}

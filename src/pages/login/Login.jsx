@@ -68,6 +68,7 @@ export default function Login() {
   return (
     <div>
       <div >
+        <h1>Login</h1>
         <form className={styles.form} onSubmit={handleLogin}>
            <TextField onChange={(e)=>setEmail(e.target.value)} id="outlined-basic" type='email' label="Email" variant="outlined" />
         <TextField onChange={(e)=>setPass(e.target.value)} id="outlined-basic" type='password' label="Password" variant="outlined" />

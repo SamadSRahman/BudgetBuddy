@@ -63,6 +63,7 @@ export default function Register() {
   }
   return (
     <div>
+      <h1>Register</h1>
       <div className={styles.form}>
         <TextField
           id="outlined-basic"
