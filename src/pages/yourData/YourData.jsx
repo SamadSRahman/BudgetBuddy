@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { atomData, atomSavings } from '../../const data/data'
-
+import Protected from '../../utils/Protected'
 export default function YourData() {
     const data = useRecoilValue(atomData)
     let savings = useRecoilValue(atomSavings)
@@ -19,10 +19,13 @@ export default function YourData() {
       }
     }
   return (
+    <>
+      <Protected/>
       <div>
           <h2>Current Savings: ₹{(savings - exp)}</h2>
           <h2>Total Expense: ₹{exp}</h2>
           <h2>Total Income: ₹{inc}</h2>
-    </div>
+      </div>
+      </>
   )
 }
