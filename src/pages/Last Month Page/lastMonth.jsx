@@ -6,6 +6,7 @@ import styles from "./lastMonth.module.css";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { Button } from "@mui/material";
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 export function LastMonth() {
   let inc = 0;
@@ -117,7 +118,9 @@ export function LastMonth() {
               </tr>
             ))}
             </table>
-            <Button onClick={downloadPDF} variant="contained">Download as PDF</Button>
+            <Button id={styles.pdfBtn} onClick={downloadPDF} variant="contained"> <PictureAsPdfIcon
+            fontSize="large"
+            /></Button>
           </div>
           
       )}
