@@ -29,3 +29,11 @@ tr:nth-child(even) {
     width: 80%;
     margin: auto;
   }
+  #pdfBtn{
+border-radius: 50%;
+width: 5rem;
+height: 5rem;
+position: fixed;
+top: 40rem;
+left: 83.2rem;
+  }
